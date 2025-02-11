@@ -48,6 +48,8 @@ const LandingPage = () => {
                   <span className="text-gray-700">
                     Welcome, {currentUser?.name || "User"}!
                   </span>
+
+                 
                   <button
                     onClick={logout}
                     className="flex items-center text-red-600 hover:text-red-800"
@@ -55,6 +57,10 @@ const LandingPage = () => {
                     <IoIosLogOut className="text-2xl" />
                     <span className="ml-2">Logout</span>
                   </button>
+
+                  <Link href={'/admin'}>
+                  <button className="text-black font-bold">Go to admin dashbord</button>
+                  </Link>
                 </div>
               )}
             </div>

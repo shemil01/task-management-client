@@ -10,30 +10,18 @@ const page = () => {
   const { login, user } = useContext(MyContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [currentUser, setCurrentUser] = useState(null);
 
   const router = useRouter();
 
 
 
-useEffect(() => {
-    const storedUser = localStorage.getItem("userInfo");
 
-    if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setCurrentUser(parsedUser);
-    } else {
-      router.push("/login");
-    }
-  }, [user]);
 
 
   const handleSumbit = (e) => {
     e.preventDefault();
     login(email, password);
-    if (currentUser.role === "admin") {
-      router.push("/admin");
-    }
+
     
   };
 
