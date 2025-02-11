@@ -18,9 +18,9 @@ const AdminDashboard = () => {
       setCurrentUser(parsedUser);
       console.log("par:", parsedUser);
       router.push("/admin");
-      //   if (!parsedUser || parsedUser.role !== "admin") {
-      //     router.push("/");
-      //   }
+        if (!parsedUser || parsedUser.role !== "admin") {
+          router.push("/");
+        }
     } else {
       router.push("/");
     }

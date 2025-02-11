@@ -1,6 +1,7 @@
 "use client";
 import { Axios } from "@/components/api/Api";
 import { useAdmin } from "@/context/AdminContext";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaEdit, FaTrash, FaCheck, FaTimes } from "react-icons/fa";
 
@@ -48,19 +49,7 @@ const Page = () => {
     setEditingUser(user._id);
     setUpdatedUser({ name: user.name, email: user.email, role: user.role });
 
-    try {
-      const res = await Axios.get(`/admin/user-tasks/${user._id}`, {
-        withCredentials: true,
-      });
-      if (res.data) {
-          setUserTasks(res.data);
-          console.log('tasks in user:',userTasks)
-      } else {
-        console.warn("No tasks found for user:", user._id);
-      }
-    } catch (err) {
-      console.error("Error fetching user tasks:", err);
-    }
+    
   };
 
   const handleSave = async (userId) => {
@@ -106,7 +95,8 @@ const Page = () => {
               </thead>
               <tbody>
                 {users?.map((user) => (
-                  <tr key={user._id} className="border">
+              
+                  <tr key={user._id}  className="border">
                     <td className="py-2 px-4">
                       {editingUser === user._id ? (
                         <input
@@ -203,15 +193,26 @@ const Page = () => {
                           >
                             {isDeleteLoading ? "Deleting..." : <FaTrash />}
                           </button>
+                           <Link href={`/admin/users/${user._id}`} >
+                           <button
+                        
+                            className="bg-blue-500 py-1 px-3 text-white"
+                           
+                          >
+                           view
+                          </button>
+                           </Link>
+                           
                         </>
                       )}
                     </td>
                   </tr>
                 ))}
+
               </tbody>
             </table>
 
-            {editingUser && (
+            {/* {editingUser && (
               <div className="mt-4">
                 <h3 className="text-xl font-semibold">Assigned Tasks</h3>
                 <ul>
@@ -236,7 +237,7 @@ const Page = () => {
                   )}
                 </ul>
               </div>
-            )}
+            )} */}
           </div>
         )}
       </div>
