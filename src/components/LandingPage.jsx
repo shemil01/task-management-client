@@ -41,7 +41,7 @@ const LandingPage = () => {
                     className="text-gray-700 hover:text-blue-600"
                   >
                     Register
-                  </Link>
+                  </Link>   
                 </>
               ) : (
                 <div className="flex md:space-x-10 space-x-2 items-center">
